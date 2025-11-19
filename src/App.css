@@ -90,7 +90,6 @@ body {
   box-shadow: 0 0 25px rgba(0,0,0,0.2);
 }
 
-/* Bounce Animation */
 @keyframes bounce {
   0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0; }
   50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
@@ -98,134 +97,121 @@ body {
   100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 }
 
+/* ------------------------------------------------------- */
+/* 🎉 MATCHING CONGRATULATIONS SCREEN */
+/* ------------------------------------------------------- */
 
-/* GAME OVER SCREEN */
-.game-over-screen {
+.congrats-screen {
+  margin-top: 120px;
   text-align: center;
-  padding: 70px;
-  margin-top: 150px;
+
+  padding: 60px 30px;
+  width: 85%;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 22px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+  animation: fadeIn 0.8s ease;
+}
+
+.congrats-screen h1 {
+  font-size: 44px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.congrats-screen p {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 12px 0;
+}
+
+.next-btn {
+  padding: 14px 32px;
+  margin-top: 25px;
+
+  background: linear-gradient(135deg, #6a5cff, #8e74ff);
+  color: white;
+
+  border: none;
+  border-radius: 14px;
+
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.25s ease;
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+.next-btn:hover {
+  transform: scale(1.08);
+  background: linear-gradient(135deg, #5646ff, #7c63ff);
+}
+
+
+/* ------------------------------------------------------- */
+/* 💀 MATCHING GAME OVER SCREEN (same style as congrats) */
+/* ------------------------------------------------------- */
+
+.game-over-screen {
+  margin-top: 120px;
+  text-align: center;
+
+  padding: 60px 30px;
+  width: 85%;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 22px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+  animation: fadeIn 0.8s ease;
 }
 
 .game-over-screen h1 {
-  font-size: 48px;
+  font-size: 44px;
   margin-bottom: 20px;
+  color: #222;
 }
 
 .game-over-screen p {
-  font-size: 24px;
+  font-size: 22px;
   margin: 10px 0;
+  font-weight: 500;
 }
 
 .restart-btn {
-  padding: 12px 28px;
-  margin-top: 20px;
-  background: #4a6fff;
+  padding: 14px 32px;
+  margin-top: 25px;
+
+  background: linear-gradient(135deg, #ff4d6d, #ff3355);
   color: white;
+
   border: none;
+  border-radius: 14px;
+
   font-size: 20px;
-  border-radius: 12px;
   cursor: pointer;
   transition: 0.25s ease;
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
 }
 
 .restart-btn:hover {
-  background: #2f4fde;
-  transform: scale(1.06);
+  transform: scale(1.08);
+  background: linear-gradient(135deg, #e61e45, #cc1035);
 }
 
-
-/* ========================= */
-/* 📱 RESPONSIVE BREAKPOINTS */
-/* ========================= */
-
-/* Tablets (768px - 1024px) */
-@media (max-width: 1024px) {
-
-  .header h1 {
-    font-size: 32px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    gap: 18px;
-  }
-
-  .card {
-    padding: 20px;
-  }
-
-  .emoji {
-    font-size: 34px;
-  }
-}
-
-/* Large Phones (480px - 767px) */
-@media (max-width: 767px) {
-
-  .header {
-    padding: 20px;
-  }
-
-  .header h1 {
-    font-size: 28px;
-  }
-
-  .score-box {
-    font-size: 16px;
-    gap: 15px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 16px;
-  }
-
-  .card {
-    padding: 18px;
-  }
-
-  .emoji {
-    font-size: 30px;
-  }
-
-  .level-popup {
-    top: 60px;
-    padding: 14px 30px;
-    font-size: 22px;
-  }
-}
-
-/* Small Phones (up to 479px) */
-@media (max-width: 479px) {
-
-  .header h1 {
-    font-size: 24px;
-  }
-
-  .score-box span {
-    font-size: 14px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-    gap: 12px;
-  }
-
-  .card {
-    padding: 15px;
-    border-radius: 14px;
-  }
-
-  .emoji {
-    font-size: 26px;
-  }
-
-  .game-over-screen h1 {
-    font-size: 36px;
-  }
-
-  .restart-btn {
-    font-size: 18px;
-    padding: 10px 20px;
-  }
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
 }
