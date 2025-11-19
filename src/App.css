@@ -154,9 +154,6 @@ body {
 }
 
 
-/* ------------------------------------------------------- */
-/* 💀 MATCHING GAME OVER SCREEN (same style as congrats) */
-/* ------------------------------------------------------- */
 
 .game-over-screen {
   margin-top: 120px;
@@ -214,4 +211,94 @@ body {
 @keyframes fadeIn {
   0% { opacity: 0; transform: scale(0.85); }
   100% { opacity: 1; transform: scale(1); }
+}
+@media (max-width: 1024px) {
+
+  .header h1 {
+    font-size: 32px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 18px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .emoji {
+    font-size: 34px;
+  }
+}
+
+/* Large Phones (480px - 767px) */
+@media (max-width: 767px) {
+
+  .header {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .score-box {
+    font-size: 16px;
+    gap: 15px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .emoji {
+    font-size: 30px;
+  }
+
+  .level-popup {
+    top: 60px;
+    padding: 14px 30px;
+    font-size: 22px;
+  }
+}
+
+/* Small Phones (up to 479px) */
+@media (max-width: 479px) {
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .score-box span {
+    font-size: 14px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 12px;
+  }
+
+  .card {
+    padding: 15px;
+    border-radius: 14px;
+  }
+
+  .emoji {
+    font-size: 26px;
+  }
+
+  .game-over-screen h1 {
+    font-size: 36px;
+  }
+
+  .restart-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
 }
