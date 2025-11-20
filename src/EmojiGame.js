@@ -13,19 +13,15 @@ export default function EmojiGame() {
   const levels = [5, 10, 15, 20, 25];
 
   const [level, setLevel] = useState(0);
-
-  const [available, setAvailable] = useState(
-    allEmojis.slice(0, levels[0])
-  );
+  const [available, setAvailable] = useState(allEmojis.slice(0, levels[0]));
   const [shuffled, setShuffled] = useState([...available]);
   const [clicked, setClicked] = useState([]);
-
   const [score, setScore] = useState(0);
 
   const [gameOver, setGameOver] = useState(false);
-
-  // NEW — Congratulations screen
-  const [showCongrats, setShowCongrats] = useState(false);
+  const [showCongrats, setShowCongrats] = useState(false); 
+  // "level" → normal level complete
+  // "final" → all levels completed
 
   const shuffleCards = () => {
     setShuffled([...available].sort(() => Math.random() - 0.5));
@@ -56,23 +52,21 @@ export default function EmojiGame() {
     // LEVEL COMPLETED
     if (newClicks.length === levels[level]) {
       if (level === levels.length - 1) {
-        // FINAL LEVEL → GAME OVER
-        setGameOver(true);
+        // FINAL LEVEL COMPLETED
+        setShowCongrats("final");
         return;
       }
 
-      // SHOW Congratulations Screen
-      setShowCongrats(true);
+      // Normal level completed
+      setShowCongrats("level");
     }
   };
 
-  // Continue to next level
   const goToNextLevel = () => {
     const next = level + 1;
 
     setLevel(next);
     const newSet = allEmojis.slice(0, levels[next]);
-
     setAvailable(newSet);
     setShuffled(newSet);
     setClicked([]);
@@ -81,8 +75,8 @@ export default function EmojiGame() {
     setShowCongrats(false);
   };
 
-  // 🎉 CONGRATS SCREEN
-  if (showCongrats) {
+  // 🎉 NORMAL LEVEL CONGRATS SCREEN
+  if (showCongrats === "level") {
     return (
       <div className="congrats-screen">
         <h1>🎉 Congratulations 🎉</h1>
@@ -91,6 +85,20 @@ export default function EmojiGame() {
 
         <button className="next-btn" onClick={goToNextLevel}>
           Continue
+        </button>
+      </div>
+    );
+  }
+
+  // 🎉 FINAL ALL LEVELS COMPLETED SCREEN
+  if (showCongrats === "final") {
+    return (
+      <div className="congrats-screen">
+        <h1>🏆 Congratulations 🏆</h1>
+        <h2>You completed ALL levels!</h2>
+
+        <button className="restart-btn" onClick={restartGame}>
+          Play Again
         </button>
       </div>
     );
