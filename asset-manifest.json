@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Emoji-Level-Game/static/css/main.bcc91932.css",
-    "main.js": "/Emoji-Level-Game/static/js/main.1be6d705.js",
+    "main.css": "/Emoji-Level-Game/static/css/main.b49d1111.css",
+    "main.js": "/Emoji-Level-Game/static/js/main.10b463a0.js",
     "static/js/453.1c95724e.chunk.js": "/Emoji-Level-Game/static/js/453.1c95724e.chunk.js",
     "index.html": "/Emoji-Level-Game/index.html",
-    "main.bcc91932.css.map": "/Emoji-Level-Game/static/css/main.bcc91932.css.map",
-    "main.1be6d705.js.map": "/Emoji-Level-Game/static/js/main.1be6d705.js.map",
+    "main.b49d1111.css.map": "/Emoji-Level-Game/static/css/main.b49d1111.css.map",
+    "main.10b463a0.js.map": "/Emoji-Level-Game/static/js/main.10b463a0.js.map",
     "453.1c95724e.chunk.js.map": "/Emoji-Level-Game/static/js/453.1c95724e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bcc91932.css",
-    "static/js/main.1be6d705.js"
+    "static/css/main.b49d1111.css",
+    "static/js/main.10b463a0.js"
   ]
 }
