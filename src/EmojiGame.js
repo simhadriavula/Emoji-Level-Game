@@ -17,11 +17,9 @@ export default function EmojiGame() {
   const [shuffled, setShuffled] = useState([...available]);
   const [clicked, setClicked] = useState([]);
   const [score, setScore] = useState(0);
-
   const [gameOver, setGameOver] = useState(false);
-  const [showCongrats, setShowCongrats] = useState(false); 
-  // "level" → normal level complete
-  // "final" → all levels completed
+  const [showCongrats, setShowCongrats] = useState(false);
+  const [showRules, setShowRules] = useState(false);
 
   const shuffleCards = () => {
     setShuffled([...available].sort(() => Math.random() - 0.5));
@@ -31,15 +29,15 @@ export default function EmojiGame() {
     setScore(0);
     setClicked([]);
     setLevel(0);
-    setAvailable(allEmojis.slice(0, levels[0]));
-    setShuffled(allEmojis.slice(0, levels[0]));
+    const firstSet = allEmojis.slice(0, levels[0]);
+    setAvailable(firstSet);
+    setShuffled(firstSet);
     setGameOver(false);
     setShowCongrats(false);
   };
 
   const handleClick = (emoji) => {
     if (clicked.includes(emoji)) {
-      // GAME OVER
       setGameOver(true);
       return;
     }
@@ -49,81 +47,66 @@ export default function EmojiGame() {
     setScore(score + 1);
     shuffleCards();
 
-    // LEVEL COMPLETED
     if (newClicks.length === levels[level]) {
       if (level === levels.length - 1) {
-        // FINAL LEVEL COMPLETED
         setShowCongrats("final");
         return;
       }
-
-      // Normal level completed
       setShowCongrats("level");
     }
   };
 
   const goToNextLevel = () => {
     const next = level + 1;
-
-    setLevel(next);
     const newSet = allEmojis.slice(0, levels[next]);
+    setLevel(next);
     setAvailable(newSet);
     setShuffled(newSet);
     setClicked([]);
     setScore(0);
-
     setShowCongrats(false);
   };
 
-  // 🎉 NORMAL LEVEL CONGRATS SCREEN
   if (showCongrats === "level") {
     return (
       <div className="congrats-screen">
         <h1>🎉 Congratulations 🎉</h1>
-        <p>You completed Level {level + 1}!</p>
-        <p>Next Level: {level + 2}</p>
-
-        <button className="next-btn" onClick={goToNextLevel}>
-          Continue
-        </button>
+        <p>You completed Level {level + 1}</p>
+        <button className="next-btn" onClick={goToNextLevel}>Continue</button>
       </div>
     );
   }
 
-  // 🎉 FINAL ALL LEVELS COMPLETED SCREEN
   if (showCongrats === "final") {
     return (
       <div className="congrats-screen">
-        <h1>🏆 Congratulations 🏆</h1>
-        <h2>You completed ALL levels!</h2>
-
-        <button className="restart-btn" onClick={restartGame}>
-          Play Again
-        </button>
+        <h1>🏆 You Won 🏆</h1>
+        <button className="restart-btn" onClick={restartGame}>Play Again</button>
       </div>
     );
   }
 
-  // GAME OVER SCREEN
   if (gameOver) {
     return (
       <div className="game-over-screen">
         <h1>Game Over</h1>
-        <p>Your Score: {score}</p>
-        <p>Your Level: {level + 1}</p>
-
-        <button className="restart-btn" onClick={restartGame}>
-          Restart Game
-        </button>
+        <p>Score: {score}</p>
+        <p>Level: {level + 1}</p>
+        <button className="restart-btn" onClick={restartGame}>Restart</button>
       </div>
     );
   }
 
-  // MAIN GAME UI
   return (
     <div className="game-container">
       <header className="header">
-        <h1>Emoji Game</h1>
+        <div className="header-top">
+          <button className="rules-btn" onClick={() => setShowRules(true)}>
+            Rules
+          </button>
+
+          <h1>Emoji Game</h1>
+        </div>
 
         <div className="score-box">
           <span>Level: {level + 1}</span>
@@ -133,15 +116,29 @@ export default function EmojiGame() {
 
       <div className="grid">
         {shuffled.map((emoji, index) => (
-          <div
-            key={index}
-            className="card"
-            onClick={() => handleClick(emoji)}
-          >
+          <div key={index} className="card" onClick={() => handleClick(emoji)}>
             <span className="emoji">{emoji}</span>
           </div>
         ))}
       </div>
+
+      {showRules && (
+        <div className="rules-overlay">
+          <div className="rules-box">
+            <h2>🎮 Game Rules</h2>
+            <ul>
+              <li>▪️ Click each emoji only once</li>
+              <li>▪️ Emojis shuffle after every click</li>
+              <li>▪️ Repeat click ends the game</li>
+              <li>▪️ Complete all emojis to level up</li>
+              <li>▪️ 5 Levels total</li>
+            </ul>
+            <button className="close-btn" onClick={() => setShowRules(false)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

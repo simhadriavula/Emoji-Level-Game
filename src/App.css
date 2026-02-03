@@ -19,33 +19,60 @@ body {
 
 /* Header */
 .header {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255,255,255,0.3);
   padding: 25px;
   border-radius: 14px;
   margin-bottom: 30px;
   backdrop-filter: blur(10px);
-
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
-.header h1 {
-  margin: 0;
+/* TOP ROW */
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.header-top h1 {
   font-size: 36px;
   font-weight: 700;
+  margin: 0;
 }
 
+/* RULES BUTTON – TOP LEFT */
+.rules-btn {
+  position: absolute;
+  right: 0;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #ff9f1c, #ff7a18);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+.rules-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Score */
 .score-box {
   font-size: 20px;
   display: flex;
   justify-content: center;
   gap: 30px;
   font-weight: 600;
-  flex-wrap: wrap;
 }
 
-/* Grid layout */
+/* Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
@@ -53,252 +80,63 @@ body {
   padding: 20px;
 }
 
-/* Emoji card */
+/* Card */
 .card {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255,255,255,0.35);
   border-radius: 18px;
   padding: 25px;
   cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(10px);
+  transition: 0.2s ease;
 }
 
 .card:hover {
   transform: scale(1.07);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
 }
 
 .emoji {
   font-size: 40px;
 }
 
-/* LEVEL UP POPUP */
-.level-popup {
+/* Rules modal */
+.rules-overlay {
   position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 25px 50px;
-  border-radius: 20px;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #222;
-  animation: bounce 1.2s ease-out forwards;
-  z-index: 999;
-  box-shadow: 0 0 25px rgba(0,0,0,0.2);
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes bounce {
-  0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0; }
-  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
-  70% { transform: translate(-50%, -50%) scale(0.9); }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-}
-
-/* ------------------------------------------------------- */
-/* 🎉 MATCHING CONGRATULATIONS SCREEN */
-/* ------------------------------------------------------- */
-
-.congrats-screen {
-  margin-top: 120px;
-  text-align: center;
-
-  padding: 60px 30px;
-  width: 85%;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
-
-  background: rgba(255, 255, 255, 0.35);
+.rules-box {
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(14px);
+  padding: 40px;
   border-radius: 22px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-
-  animation: fadeIn 0.8s ease;
+  width: 90%;
+  max-width: 500px;
 }
 
-.congrats-screen h1 {
-  font-size: 44px;
-  margin-bottom: 20px;
-  color: #222;
+.rules-box li {
+  list-style: none;
+  font-size: 20px;
+  margin: 14px 0;
 }
 
-.congrats-screen p {
-  font-size: 24px;
-  font-weight: 500;
-  margin: 12px 0;
-}
-
-.next-btn {
-  padding: 14px 32px;
-  margin-top: 25px;
-
+.close-btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border-radius: 14px;
+  border: none;
   background: linear-gradient(135deg, #6a5cff, #8e74ff);
   color: white;
-
-  border: none;
-  border-radius: 14px;
-
-  font-size: 20px;
   cursor: pointer;
-  transition: 0.25s ease;
-
-  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
 }
 
-.next-btn:hover {
-  transform: scale(1.08);
-  background: linear-gradient(135deg, #5646ff, #7c63ff);
-}
-
-
-
-.game-over-screen {
-  margin-top: 120px;
-  text-align: center;
-
-  padding: 60px 30px;
-  width: 85%;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
-
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 22px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-
-  animation: fadeIn 0.8s ease;
-}
-
-.game-over-screen h1 {
-  font-size: 44px;
-  margin-bottom: 20px;
-  color: #222;
-}
-
-.game-over-screen p {
-  font-size: 22px;
-  margin: 10px 0;
-  font-weight: 500;
-}
-
-.restart-btn {
-  padding: 14px 32px;
-  margin-top: 25px;
-
-  background: linear-gradient(135deg, #ff4d6d, #ff3355);
-  color: white;
-
-  border: none;
-  border-radius: 14px;
-
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.25s ease;
-
-  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
-}
-
-.restart-btn:hover {
-  transform: scale(1.08);
-  background: linear-gradient(135deg, #e61e45, #cc1035);
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-  0% { opacity: 0; transform: scale(0.85); }
-  100% { opacity: 1; transform: scale(1); }
-}
-@media (max-width: 1024px) {
-
-  .header h1 {
-    font-size: 32px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    gap: 18px;
-  }
-
-  .card {
-    padding: 20px;
-  }
-
-  .emoji {
-    font-size: 34px;
-  }
-}
-
-/* Large Phones (480px - 767px) */
+/* Responsive */
 @media (max-width: 767px) {
-
-  .header {
-    padding: 20px;
-  }
-
-  .header h1 {
-    font-size: 28px;
-  }
-
-  .score-box {
-    font-size: 16px;
-    gap: 15px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 16px;
-  }
-
-  .card {
-    padding: 18px;
-  }
-
-  .emoji {
-    font-size: 30px;
-  }
-
-  .level-popup {
-    top: 60px;
-    padding: 14px 30px;
-    font-size: 22px;
-  }
-}
-
-/* Small Phones (up to 479px) */
-@media (max-width: 479px) {
-
-  .header h1 {
-    font-size: 24px;
-  }
-
-  .score-box span {
-    font-size: 14px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-    gap: 12px;
-  }
-
-  .card {
-    padding: 15px;
-    border-radius: 14px;
-  }
-
-  .emoji {
-    font-size: 26px;
-  }
-
-  .game-over-screen h1 {
-    font-size: 36px;
-  }
-
-  .restart-btn {
-    font-size: 18px;
-    padding: 10px 20px;
-  }
+  .header-top h1 { font-size: 26px; }
+  .rules-btn { font-size: 14px; padding: 6px 14px; }
+  .score-box { font-size: 16px; }
 }
