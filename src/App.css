@@ -140,3 +140,55 @@ body {
   .rules-btn { font-size: 14px; padding: 6px 14px; }
   .score-box { font-size: 16px; }
 }
+
+
+
+
+/* Buttons – global style */
+button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  color: white;
+  background: linear-gradient(135deg, #6a5cff, #8e74ff);
+}
+
+button:hover {
+  transform: scale(1.08);
+  opacity: 0.9;
+}
+
+/* Keep your existing rules-btn style but it will inherit button base */
+.rules-btn {
+  position: absolute;
+  right: 0;
+  background: linear-gradient(135deg, #ff9f1c, #ff7a18);
+}
+/* Center screens */
+.congrats-screen,
+.game-over-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertical center */
+  align-items: center;       /* horizontal center */
+  text-align: center;
+  gap: 20px;
+}
+
+/* Optional box style */
+.congrats-screen,
+.game-over-screen {
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 420px;
+  margin: auto;
+}
